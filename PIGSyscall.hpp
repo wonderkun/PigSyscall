@@ -23,6 +23,29 @@ extern uint8_t encrypted_manual_syscall_stub[];
 extern uint8_t encrypted_masked_syscall_stub[];
 
 
+template <unsigned int size>
+class Hash_String {
+public:
+    volatile DWORD32 value;
+    __forceinline constexpr  Hash_String(const char* string, UINT count) :value(0)
+    {
+
+        DWORD Mask = (CHAR_BIT * sizeof(value) - 1);
+
+        count &= Mask;
+
+        for (unsigned i = 0u; i < size; ++i)
+        {
+            value = string[i] + (value >> count | value << ((Mask + 1 - count) & Mask));
+        }
+
+    }
+
+};
+
+#define HASH(my_string) ([]{ constexpr Hash_String<(sizeof(my_string)/sizeof(char) -1)> name(my_string,0xd8); return name.value; }())
+
+
 namespace pigsyscall {
 
 class syscall {

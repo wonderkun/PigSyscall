@@ -128,7 +128,7 @@ namespace pigsyscall::utils {
     #define mpbbS   (mpbbCrypt + 256)
     #define mpbbI   (mpbbCrypt + 512)
 
-    //从Exchange 邮件编码拿出来的，刚好可以简单编码一下stub
+    //锟斤拷Exchange 锟绞硷拷锟斤拷锟斤拷锟矫筹拷锟斤拷锟侥ｏ拷锟秸好匡拷锟皆简单憋拷锟斤拷一锟斤拷stub
     inline void CryptPermute(PVOID pv, int cb, BOOL fEncrypt)
     {
         byte* pb = (byte*)pv;
@@ -258,7 +258,7 @@ namespace pigsyscall::utils {
 #pragma warning( pop ) 
     }
 
-    //拿来的Hash算法
+    //锟斤拷锟斤拷锟斤拷Hash锟姐法
     //String HASH
     inline DWORD _HashStringRotr32A(PCHAR String) {
 
